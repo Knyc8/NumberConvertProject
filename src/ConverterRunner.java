@@ -21,6 +21,10 @@ class ConverterRunner {
         int[] digits = nc.getDigits();
         System.out.println("\n\nDigit array: " + Arrays.toString(digits));
         System.out.println("Number: " + nc.displayOriginalNumber());
+        /*System.out.println(Arrays.toString(nc.convertToDecimal()));
+        System.out.println(nc.displayAsNumber(nc.convertToDecimal()));*/
+        System.out.println(Arrays.toString(nc.convertToBinary()));
+        System.out.println(nc.displayAsNumber(nc.convertToBinary()));
     }
 }
 
