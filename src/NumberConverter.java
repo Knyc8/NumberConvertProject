@@ -1,6 +1,7 @@
 public class NumberConverter {
     int[] digits;
     int base;
+    int number;
 
     public NumberConverter(int number, int base) {
         String numberAsString = Integer.toString(number);
@@ -11,6 +12,7 @@ public class NumberConverter {
             digits[i] = d;
         }
         this.base = base;
+        this.number = number;
     }
 
     public String displayOriginalNumber() {
@@ -27,7 +29,7 @@ public class NumberConverter {
         for (int i = 0; i < newDigits.length; i++) {
             o = o + newDigits[i];
         }
-        o = o + "\n";
+        o = o;
         return o;
     }
 
@@ -55,17 +57,14 @@ public class NumberConverter {
 
     public int[] convertToBinary() {
         String binary = "";
-        int num = 0;
-        for (int i = digits.length-1; i >= 0; i--)
+        String display = displayAsNumber(convertToDecimal());
+        int num = Integer.parseInt(display);
+        while ((num / 2) != 0)
         {
-            num += digits[i] * Math.pow(10, digits.length-1-i);
+            binary = num % 2 + binary;
+            num = num/2;
         }
-
-        while ((num / base) != 0)
-        {
-            binary = num % base +  binary;
-            num -= num % base;
-        }
+        binary = num%2 + binary;
 
         String numberAsString = binary;
         int[] toBin = new int[numberAsString.length()];
@@ -78,7 +77,24 @@ public class NumberConverter {
     }
 
     public int[] convertToOctal() {
-        return null;
+        String octal = "";
+        String display = displayAsNumber(convertToDecimal());
+        int num = Integer.parseInt(display);
+        while ((num / 8) != 0)
+        {
+            octal = num % 8 + octal;
+            num = num/8;
+        }
+        octal = num%8 + octal;
+
+        String numberAsString = octal;
+        int[] toOct = new int[numberAsString.length()];
+        for (int i = 0; i < numberAsString.length(); i++) {
+            String single = numberAsString.substring(i,i+1);
+            int d = Integer.parseInt(single);
+            toOct[i] = d;
+        }
+        return toOct;
     }
 }
 

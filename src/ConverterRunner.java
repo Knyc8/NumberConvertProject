@@ -21,10 +21,31 @@ class ConverterRunner {
         int[] digits = nc.getDigits();
         System.out.println("\n\nDigit array: " + Arrays.toString(digits));
         System.out.println("Number: " + nc.displayOriginalNumber());
-        /*System.out.println(Arrays.toString(nc.convertToDecimal()));
-        System.out.println(nc.displayAsNumber(nc.convertToDecimal()));*/
-        System.out.println(Arrays.toString(nc.convertToBinary()));
-        System.out.println(nc.displayAsNumber(nc.convertToBinary()));
+
+        if (base == 2)
+        {
+            System.out.println("Octal Digit Array: " + Arrays.toString(nc.convertToOctal()));
+            System.out.println("Octal Number: " + nc.displayAsNumber(nc.convertToOctal()));
+            System.out.println();
+            System.out.println("Decimal Digit Array: " + Arrays.toString(nc.convertToDecimal()));
+            System.out.println("Decimal Number: " + nc.displayAsNumber(nc.convertToDecimal()));
+        }
+        if (base == 8)
+        {
+            System.out.println("Binary Digit Array: " + Arrays.toString(nc.convertToBinary()));
+            System.out.println("Binary Number: " + nc.displayAsNumber(nc.convertToBinary()));
+            System.out.println();
+            System.out.println("Decimal Digit Array: " + Arrays.toString(nc.convertToDecimal()));
+            System.out.println("Decimal Number: " + nc.displayAsNumber(nc.convertToDecimal()));
+        }
+        if (base == 10)
+        {
+            System.out.println("Octal Digit Array: " + Arrays.toString(nc.convertToOctal()));
+            System.out.println("Octal Number: " + nc.displayAsNumber(nc.convertToOctal()));
+            System.out.println();
+            System.out.println("Octal Digit Array: " + Arrays.toString(nc.convertToOctal()));
+            System.out.println("Octal Number: " + nc.displayAsNumber(nc.convertToOctal()));
+        }
     }
 }
 
