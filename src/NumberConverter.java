@@ -33,6 +33,15 @@ public class NumberConverter {
         return o;
     }
 
+    public String displayAsNumber(String[] newDigits) {
+        String o = "";
+        for (int i = 0; i < newDigits.length; i++) {
+            o = o + newDigits[i];
+        }
+        o = o;
+        return o;
+    }
+
     public int[] getDigits() {
         return digits;
     }
@@ -95,6 +104,95 @@ public class NumberConverter {
             toOct[i] = d;
         }
         return toOct;
+    }
+
+    public String[] convertToHexadec() {
+        String hex = "";
+        String display = displayAsNumber(convertToDecimal());
+        int num = Integer.parseInt(display);
+        while ((num / 16) != 0)
+        {
+            if (num%16 > 9)
+            {
+                hex = numGreater9(num%16) + hex;
+            }
+            else {
+                hex = num % 16 + hex;
+            }
+            num = num/16;
+        }
+        if (num%16 > 9)
+        {
+            hex = numGreater9(num%16) + hex;
+        }
+        else {
+            hex = num % 16 + hex;
+        }
+
+        String numberAsString = hex;
+        String[] toHex = new String[numberAsString.length()];
+        for (int i = 0; i < numberAsString.length(); i++) {
+            String single = numberAsString.substring(i,i+1);
+            String d = single;
+            toHex[i] = d;
+        }
+        return toHex;
+    }
+
+    public String[] convertToAnyBase(int newBase) {
+        String anyBase = "";
+        String display = displayAsNumber(convertToDecimal());
+        int num = Integer.parseInt(display);
+        while ((num / newBase) != 0)
+        {
+            if (num%newBase > 9)
+            {
+                anyBase = numGreater9(num%newBase) + anyBase;
+            }
+            else {
+                anyBase = num % newBase + anyBase;
+            }
+            num = num/newBase;
+        }
+        if (num%newBase > 9)
+        {
+            anyBase = numGreater9(num%newBase) + anyBase;
+        }
+        else {
+            anyBase = num % newBase + anyBase;
+        }
+
+        String numberAsString = anyBase;
+        String[] toAB = new String[numberAsString.length()];
+        for (int i = 0; i < numberAsString.length(); i++) {
+            String single = numberAsString.substring(i,i+1);
+            String d = single;
+            toAB[i] = d;
+        }
+        return toAB;
+    }
+
+    private String numGreater9(int num)
+    {
+        if (num == 10) {
+            return "A";
+        }
+        if (num == 11) {
+            return "B";
+        }
+        if (num == 12) {
+            return "C";
+        }
+        if (num == 13) {
+            return "D";
+        }
+        if (num == 14) {
+            return "E";
+        }
+        if (num == 15) {
+            return "f";
+        }
+        return "X";
     }
 }
 

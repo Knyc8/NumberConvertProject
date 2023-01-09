@@ -22,13 +22,16 @@ class ConverterRunner {
         System.out.println("\n\nDigit array: " + Arrays.toString(digits));
         System.out.println("Number: " + nc.displayOriginalNumber());
 
-        if (base == 2)
+        /*if (base == 2)
         {
             System.out.println("Octal Digit Array: " + Arrays.toString(nc.convertToOctal()));
             System.out.println("Octal Number: " + nc.displayAsNumber(nc.convertToOctal()));
             System.out.println();
             System.out.println("Decimal Digit Array: " + Arrays.toString(nc.convertToDecimal()));
             System.out.println("Decimal Number: " + nc.displayAsNumber(nc.convertToDecimal()));
+            System.out.println();
+            System.out.println("Hexadecimal Digit Array: " + Arrays.toString(nc.convertToHexadec()));
+            System.out.println("Hexadecimal Number: " + nc.displayAsNumber(nc.convertToHexadec()));
         }
         if (base == 8)
         {
@@ -37,15 +40,37 @@ class ConverterRunner {
             System.out.println();
             System.out.println("Decimal Digit Array: " + Arrays.toString(nc.convertToDecimal()));
             System.out.println("Decimal Number: " + nc.displayAsNumber(nc.convertToDecimal()));
+            System.out.println();
+            System.out.println("Hexadecimal Digit Array: " + Arrays.toString(nc.convertToHexadec()));
+            System.out.println("Hexadecimal Number: " + nc.displayAsNumber(nc.convertToHexadec()));
         }
         if (base == 10)
         {
-            System.out.println("Octal Digit Array: " + Arrays.toString(nc.convertToOctal()));
-            System.out.println("Octal Number: " + nc.displayAsNumber(nc.convertToOctal()));
+            System.out.println("Binary Digit Array: " + Arrays.toString(nc.convertToBinary()));
+            System.out.println("Binary Number: " + nc.displayAsNumber(nc.convertToBinary()));
             System.out.println();
             System.out.println("Octal Digit Array: " + Arrays.toString(nc.convertToOctal()));
             System.out.println("Octal Number: " + nc.displayAsNumber(nc.convertToOctal()));
+            System.out.println();
+            System.out.println("Hexadecimal Digit Array: " + Arrays.toString(nc.convertToHexadec()));
+            System.out.println("Hexadecimal Number: " + nc.displayAsNumber(nc.convertToHexadec()));
         }
+        else
+        {
+            System.out.println("Binary Digit Array: " + Arrays.toString(nc.convertToBinary()));
+            System.out.println("Binary Number: " + nc.displayAsNumber(nc.convertToBinary()));
+            System.out.println();
+            System.out.println("Octal Digit Array: " + Arrays.toString(nc.convertToOctal()));
+            System.out.println("Octal Number: " + nc.displayAsNumber(nc.convertToOctal()));
+            System.out.println();
+            System.out.println("Decimal Digit Array: " + Arrays.toString(nc.convertToDecimal()));
+            System.out.println("Decimal Number: " + nc.displayAsNumber(nc.convertToDecimal()));
+            System.out.println();
+            System.out.println("Hexadecimal Digit Array: " + Arrays.toString(nc.convertToHexadec()));
+            System.out.println("Hexadecimal Number: " + nc.displayAsNumber(nc.convertToHexadec()));
+        }*/
+
+        System.out.println(nc.displayAsNumber(nc.convertToAnyBase(36)));
     }
 }
 
