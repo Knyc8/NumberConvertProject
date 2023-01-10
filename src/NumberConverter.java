@@ -174,25 +174,8 @@ public class NumberConverter {
 
     private String numGreater9(int num)
     {
-        if (num == 10) {
-            return "A";
-        }
-        if (num == 11) {
-            return "B";
-        }
-        if (num == 12) {
-            return "C";
-        }
-        if (num == 13) {
-            return "D";
-        }
-        if (num == 14) {
-            return "E";
-        }
-        if (num == 15) {
-            return "f";
-        }
-        return "X";
+        String[] values = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "+", "/"};
+        return values[num];
     }
 }
 

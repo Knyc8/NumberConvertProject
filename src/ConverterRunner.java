@@ -13,6 +13,37 @@ class ConverterRunner {
 
         System.out.print("Enter your number: ");
         String number = s.nextLine();
+        if (base <= 10)
+        {
+            while (isNum(number) == false)
+            {
+                System.out.print("Enter an appropriate number according to your base: ");
+                number = s.nextLine();
+            }
+            int[] numDigits = numAsDig(number);
+            boolean correct = true;
+            for (int digit : numDigits) {
+                if (digit >= base) {
+                    correct = false;
+                }
+            }
+            while (correct == false) {
+                System.out.print("Enter an appropriate number according to your base: ");
+                number = s.nextLine();
+                numDigits = numAsDig(number);
+                int correctCounter = 0;
+                for (int digit : numDigits) {
+                    if (digit < base) {
+                        correctCounter++;
+                    }
+                }
+                if (correctCounter == numDigits.length)
+                {
+                    correct = true;
+                }
+            }
+        }
+
         int n = Integer.parseInt(number);
 
         s.close();
@@ -22,7 +53,7 @@ class ConverterRunner {
         System.out.println("\n\nDigit array: " + Arrays.toString(digits));
         System.out.println("Number: " + nc.displayOriginalNumber());
 
-        /*if (base == 2)
+        if (base == 2)
         {
             System.out.println("Octal Digit Array: " + Arrays.toString(nc.convertToOctal()));
             System.out.println("Octal Number: " + nc.displayAsNumber(nc.convertToOctal()));
@@ -68,9 +99,33 @@ class ConverterRunner {
             System.out.println();
             System.out.println("Hexadecimal Digit Array: " + Arrays.toString(nc.convertToHexadec()));
             System.out.println("Hexadecimal Number: " + nc.displayAsNumber(nc.convertToHexadec()));
-        }*/
+        }
 
         System.out.println(nc.displayAsNumber(nc.convertToAnyBase(36)));
+    }
+
+    private static boolean isNum(String num)
+    {
+        try
+        {
+            Integer.parseInt(num);
+            return true;
+        }
+        catch (NumberFormatException ex)
+        {
+            return false;
+        }
+    }
+
+    private static int[] numAsDig(String num)
+    {
+        int[] numDigits = new int[num.length()];
+        for (int i = 0; i < num.length(); i++) {
+            String single = num.substring(i,i+1);
+            int d = Integer.parseInt(single);
+            numDigits[i] = d;
+        }
+        return numDigits;
     }
 }
 
