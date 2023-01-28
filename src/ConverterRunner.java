@@ -76,12 +76,18 @@ class ConverterRunner {
             }
         }
 
-        s.close();
-
         NumberConverter nc = new NumberConverter(number, base);
-        int[] digits = nc.getDigits();
-        System.out.println("\n\nDigit array: " + Arrays.toString(digits));
-        System.out.println("Number: " + nc.displayOriginalNumber());
+        if (base == 16)
+        {
+            String[] digits = nc.getLetterDigits();
+            System.out.println("\nDigit array: " + Arrays.toString(digits));
+            System.out.println("Number: " + number);
+        }
+        else {
+            int[] digits = nc.getDigits();
+            System.out.println("\nDigit array: " + Arrays.toString(digits));
+            System.out.println("Number: " + nc.displayOriginalNumber());
+        }
 
         if (base == 2)
         {
@@ -107,6 +113,53 @@ class ConverterRunner {
             System.out.println("Octal Number: " + nc.displayAsNumber(nc.convertToOctal()));
             System.out.println("Decimal Number: " + nc.displayAsNumber(nc.convertToDecimal()));
         }
+
+        System.out.print("\nEnter any number in base 10: ");
+        number = s.nextLine();
+        while (isNum(number) == false)
+        {
+            System.out.print("Enter a base 10 number: ");
+            number = s.nextLine();
+        }
+        int[] numDigits = numAsDig(number);
+        boolean correct = true;
+        for (int digit : numDigits) {
+            if (digit >= base) {
+                correct = false;
+            }
+        }
+        while (correct == false) {
+            System.out.print("Enter a base 10 number: ");
+            number = s.nextLine();
+            numDigits = numAsDig(number);
+            int correctCounter = 0;
+            for (int digit : numDigits) {
+                if (digit < base) {
+                    correctCounter++;
+                }
+            }
+            if (correctCounter == numDigits.length)
+            {
+                correct = true;
+            }
+        }
+        int b10Num = Integer.parseInt(number);
+        System.out.print("Enter any base from 1 to 64: ");
+        String check = s.nextLine();
+        while (isNum(check) == false)
+        {
+            System.out.print("Please enter a number: ");
+            check = s.nextLine();
+        }
+        while (Integer.parseInt(check) < 1 || Integer.parseInt(check) > 64)
+        {
+            System.out.print("Enter a number base 1-64: ");
+            check = s.nextLine();
+        }
+        base = Integer.parseInt(check);
+        System.out.println("Base " + base + " number: " + nc.displayAsNumber(nc.convertToAnyBase(b10Num, base)));
+
+        s.close();
     }
 
     private static boolean isNum(String num)

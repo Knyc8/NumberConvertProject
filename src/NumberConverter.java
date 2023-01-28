@@ -1,5 +1,6 @@
 public class NumberConverter {
     private int[] digits;
+    private String[] letterDigits;
     private int base;
     public static final String[] VALUES = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "+", "/"};
 
@@ -11,6 +12,15 @@ public class NumberConverter {
             digits[i] = d;
         }
         this.base = base;
+        if (base == 16)
+        {
+            letterDigits = new String[number.length()];
+            for (int i = 0; i < number.length(); i++) {
+                String single = number.substring(i,i+1);
+                String d = single;
+                letterDigits[i] = d;
+            }
+        }
     }
 
     public String displayOriginalNumber() {
@@ -42,6 +52,9 @@ public class NumberConverter {
 
     public int[] getDigits() {
         return digits;
+    }
+    public String[] getLetterDigits() {
+        return letterDigits;
     }
 
     public int[] convertToDecimal() {
@@ -137,10 +150,11 @@ public class NumberConverter {
         return toHex;
     }
 
-    public String[] convertToAnyBase(int newBase) {
+    public String[] convertToAnyBase(int b10num, int newBase) {
         String anyBase = "";
-        String display = displayAsNumber(convertToDecimal());
-        int num = Integer.parseInt(display);
+        /*String display = displayAsNumber(convertToDecimal());
+        int num = Integer.parseInt(display);*/
+        int num = b10num;
         while ((num / newBase) != 0)
         {
             if (num%newBase > 9)
