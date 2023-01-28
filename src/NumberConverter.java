@@ -1,18 +1,16 @@
 public class NumberConverter {
-    int[] digits;
-    int base;
-    int number;
+    private int[] digits;
+    private int base;
+    public static final String[] VALUES = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "+", "/"};
 
-    public NumberConverter(int number, int base) {
-        String numberAsString = Integer.toString(number);
-        digits = new int[numberAsString.length()];
-        for (int i = 0; i < numberAsString.length(); i++) {
-            String single = numberAsString.substring(i,i+1);
-            int d = Integer.parseInt(single);
+    public NumberConverter(String number, int base) {
+        digits = new int[number.length()];
+        for (int i = 0; i < number.length(); i++) {
+            String single = number.substring(i,i+1);
+            int d = letterToNum(single);
             digits[i] = d;
         }
         this.base = base;
-        this.number = number;
     }
 
     public String displayOriginalNumber() {
@@ -174,8 +172,19 @@ public class NumberConverter {
 
     private String numGreater9(int num)
     {
-        String[] values = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "+", "/"};
-        return values[num];
+        return VALUES[num];
+    }
+
+    public static int letterToNum(String letter)
+    {
+        for (int i = 0; i < VALUES.length; i++)
+        {
+            if (letter.equals(VALUES[i]))
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 }
 
